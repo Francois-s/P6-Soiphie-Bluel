@@ -1,13 +1,11 @@
 async function getWorks() {
-  let reponse = await fetch("http://localhost:5678/api/works");
-  let result = await reponse.json();
   try {
-    const response = await fetch('http://localhost:5678/api/works');
+    let reponse = await fetch("http://localhost:5678/api/works");
+    let result = await reponse.json();
+    return (result);
   } catch (error) {
     console.log('There was an error', error);
   }
-
-  return (result);
 }
 
 async function getCategories() {
