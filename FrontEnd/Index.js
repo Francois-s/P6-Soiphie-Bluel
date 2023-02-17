@@ -50,9 +50,7 @@ function setIntoIndex(categories, works) {
   let gallery_stock = document.getElementById("gallery");
   let categories_stock = document.getElementById("categories");
 
-  console.log(works);
   works.forEach(element => {
-    console.log({ works, element });
     gallery_stock.innerHTML += `<figure>
       <img src="${element.imageUrl}" crossorigin="anonymous" alt="${element.title}" id_category="${element.categoryId}">
       <figcaption id_category="${element.categoryId}">${element.title}</figcaption>

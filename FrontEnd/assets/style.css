@@ -367,7 +367,7 @@ footer nav ul {
 	padding-top: 50px;
 	width: 100%;
 	height: 350%;
-	position: absolute;
+	position: fixed;
 	max-width: 1440px;
 }
 
@@ -380,13 +380,12 @@ footer nav ul {
 }
 
 .card_form {
-	height: 731px;
-	width: 630px;
+	height: 651px;
+	width: 520px;
 	background-color: #FFFFFF;
 	border-radius: 10px;
 	margin-left: 30%;
-	display: flex;
-	flex-wrap: wrap;
+	padding: 32px 32px 48px 55px;
 }
 
 .img_card {
@@ -395,4 +394,80 @@ footer nav ul {
 	left: 510px;
 	top: 796px;
 	margin: 10px;
+}
+
+.card_close {
+	height: 12.009889602661133px;
+	width: 12.0115966796875px;
+	left: 500px;
+	border-radius: 0px;
+	position: relative;
+
+}
+
+#card_form {
+	display: flex;
+	flex-wrap: wrap;
+	padding-right: 15px;
+}
+
+.title_gallery {
+	font-family: Work Sans;
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 30px;
+	letter-spacing: 0em;
+	color: #000000;
+	padding-left: 154px;
+	padding-top: 15px;
+	padding-bottom: 30px;
+}
+
+.trait {
+	border: 1px;
+	height: 1px;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 47px;
+	background-color: #B3B3B3;
+	margin-bottom: 10px;
+}
+
+.button_gallery {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin: 2em auto;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px;
+	padding: 10px;
+}
+
+.red_text {
+	text-align: center;
+	font-family: Syne;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 17px;
+	color: #D65353;
+}
+
+.text_card {
+	margin-left: 10px;
+}
+
+.trash {
+	background: black;
+	position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 61px;
+    margin-top: -110px;
+    width: 20px;
+    height: 20px;
+    color: white;
+    cursor: pointer;
 }
