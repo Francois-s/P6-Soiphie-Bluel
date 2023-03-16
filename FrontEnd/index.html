@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 
-<div id="top_box" class="top_box">
+<div id="top_box" class="top_box invisibleb">
 	<button id="edition-mode" class="edition-btn">
 		<i class="fa-regular fa-pen-to-square pen-square"></i>
 		Mode édition
@@ -23,13 +23,40 @@
 	<input value="Publier les changements" id="edit_valid">
 </div>
 <div class="overlay invisible" id="overlay" idx="0">
-	<div class="card_form">
+	<div class="card_form" id="card_block" idx="0">
 		<div class="card_close" id="card_close">x</div>
 		<h2 class="title_gallery">gallery photo</h2>
 		<div id="card_form"></div>
 		<div class="trait"></div>
-		<div class="button_gallery">Ajouter une photo</div>
+		<div class="button_gallery" id="button_gallery">Ajouter une photo</div>
 		<p id="supp_gallery" class="red_text">supprimer la gallery</p>
+	</div>
+	<div class="card_form2 invisible" id="card_block2">
+		<i class="fa-solid fa-arrow-left-long"  id="prev1"></i>
+		<div class="card_close2" id="card_close2">x</div>
+		<h2 class="title_gallery2">Ajout photo</h2>
+		<form id="form_gallery" method="post" enctype="multipart/form-data">
+			<div class="upload_image">
+				<i class="fa-regular fa-image"></i>
+				<!--<label  id="add_picture">+ Ajouter photo </label>-->
+				<input type="file" accept="image/jpg, image/png" id="img_upload" name="image" required="">
+				<img src=""  alt="rendu-upload" id="rendu-upload" style="z-index: -2;">
+				<p class="text_box">jpg, png : 4mo max</p>
+			</div>
+
+			<label for="title_form" class="title_card2">Titre</label>
+			<input type="text" name="title_form" id="title_form" class="title_form" required="">
+
+			<label for="categrory_form" class="">Catégorie</label><select name="categrory_form" id="categrory_form"
+				required="" class="title_form">
+				<option value=""> </option>
+				<option value="1">Objets</option>
+				<option value="2">Appartements</option>
+				<option value="3">Hotels &amp; restaurants</option>
+			</select>
+			<div class="trait2" style="padding-top: 0px !important;"></div>
+			<button class="button_gallery" type="submit" id="button_gallery_2" style="background-color: rgb(167, 167, 167);">Valider</button>
+		</form>
 	</div>
 </div>
 
@@ -43,7 +70,7 @@
 			<ul>
 				<li>projets</li>
 				<li><a href="#contact"> contact</a></li>
-				<li><a href="./login.html">login</a></li>
+				<li><a href="./login.html" class="loging" id="loging" >login</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>

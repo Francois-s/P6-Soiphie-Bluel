@@ -70,11 +70,13 @@ function setIntoIndex(categories, works) {
   }
 }
 
+
 async function getInfos() {
   let categories = await getCategories();
   let works = await getWorks();
 
   setIntoIndex(categories, works);
+  console.log(window.localStorage.getItem('isco'));
 }
 
 getInfos();
