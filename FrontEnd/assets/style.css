@@ -576,7 +576,6 @@ footer nav ul {
 #img_upload {
 	position: absolute;
 	align-self: center;
-	width: 100px;
 	bottom: 488px;
 	z-index: -1;
 }

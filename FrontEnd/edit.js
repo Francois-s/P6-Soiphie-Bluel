@@ -14,7 +14,6 @@ function is_co() {
     } else {
         document.getElementById('loging').innerHTML = "login";
     }
-    console.log(window.localStorage.getItem('isco'));
     editIndex(window.localStorage.getItem('isco'));
 }
 
@@ -27,7 +26,6 @@ window.onload = function () {
     is_co();
 }
 
-//addEventListener("click", () => {
 async function getWorks() {
 
     try {
@@ -35,7 +33,7 @@ async function getWorks() {
         let result = await reponse.json();
         return (result);
     } catch (error) {
-        console.log('There was an error', error);
+        console.log('error', error);
     }
 }
 
@@ -44,23 +42,24 @@ async function setWork() {
     let card_form = document.getElementById('card_form');
 
     card_form.innerHTML = '';
-    works.forEach((element, idx) => {
+    works.forEach((element) => {
         card_form.innerHTML += `<figure>
       <img src="${element.imageUrl}" crossorigin="anonymous" alt="${element.title}" id_category="${element.categoryId}" class="img_card">
-      <i class="fa-regular fa-trash-can trash" onclick="trashBin(${element.id})" id="supp_mg " trash-id="${idx}"></i>
+      <i class="fa-regular fa-trash-can trash"" id="supp_mg" trash-id="${element.id}"></i>
       <figcaption class="text_card" id_category="${element.categoryId}">éditer</figcaption>
     </figure>`;
     });
+    let trash_tab = document.getElementsByClassName("trash");
+    for (let inc = 0; inc < trash_tab.length; inc++)
+        trash_tab[inc].addEventListener("click", () => {
+            trashBin(trash_tab[inc].getAttribute("trash-id"));
+        });
 }
 
 function prevPage() {
-    console.log("test");
-    let card_block1 = document.getElementById('card_block');
-    let card_block2 = document.getElementById('card_block2');
+    document.getElementById('card_block').classList.remove('invisible');
+    document.getElementById('card_block2').classList.add('invisible');
 
-
-    card_block2.classList.add('invisible');
-    card_block1.classList.remove('invisible');
     setWork();
 }
 
@@ -76,7 +75,7 @@ function trashBin(stk) {
             setWork();
             displayCategorie(0);
         })
-        .catch((err) => console.log(err, "fetch error "));
+        .catch((err) => console.log(err, "error fetch"));
 }
 
 function overlayClear() {
@@ -91,20 +90,16 @@ function clearMode() {
     let card_block1 = document.getElementById('card_block');
 
     if (overlay.getAttribute('idx') == 0) {
-        console.log("coucou2");
 
         overlay.classList.remove("invisible");
         overlay.setAttribute("idx", 1);
-        disableScroll();
         if (card_block1.getAttribute('idx') == 1) {
             card_block1.classList.remove('invisible');
             document.getElementById('card_block2').classList.add('invisible');
         }
     } else {
-        console.log("coucou");
         overlay.classList.add("invisible");
         overlay.setAttribute("idx", 0);
-        enableScroll()
     }
     setWork();
 }
@@ -125,11 +120,10 @@ document.getElementById('card_close2').addEventListener("click", clearMode);
 
 document.getElementById('button_gallery').addEventListener("click", () => {
     let card_block1 = document.getElementById('card_block');
-    let card_block2 = document.getElementById('card_block2');
 
+    document.getElementById('card_block2').classList.remove("invisible");
     card_block1.classList.add("invisible");
     card_block1.setAttribute('idx', 1);
-    card_block2.classList.remove("invisible");
 });
 
 document.getElementById('card_close').addEventListener("click", () => {
@@ -144,46 +138,6 @@ document.getElementById('card_close').addEventListener("click", () => {
     }
     setWork();
 });
-
-var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-
-function preventDefault(stock) {
-    stock.preventDefault();
-}
-
-function preventDefaultForScrollKeys(e) {
-    if (keys[e.keyCode]) {
-        preventDefault(e);
-        return false;
-    }
-}
-
-var supportsPassive = false;
-try {
-    window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-        get: function () { supportsPassive = true; }
-    }));
-} catch (e) { }
-
-var wheelOpt = supportsPassive ? { passive: false } : false;
-var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
-
-
-// call this to Disable
-function disableScroll() {
-    window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-    window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-    window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
-    window.addEventListener('keydown', preventDefaultForScrollKeys, false);
-}
-
-// call this to Enable
-function enableScroll() {
-    window.removeEventListener('DOMMouseScroll', preventDefault, false);
-    window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
-    window.removeEventListener('touchmove', preventDefault, wheelOpt);
-    window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
-}
 
 document.getElementById("form_gallery").addEventListener("submit", (resp) => {
     resp.preventDefault();
@@ -203,6 +157,7 @@ document.getElementById("form_gallery").addEventListener("submit", (resp) => {
     })
         .then((response) => response.json())
         .then((response) => {
+            console.log(response);
             prevPage();
             document.getElementById("rendu-upload").style.zIndex = "-1";
             document.getElementById("button_gallery_2").style.backgroundColor = "#A7A7A7";
@@ -210,7 +165,7 @@ document.getElementById("form_gallery").addEventListener("submit", (resp) => {
             resp.target.categrory_form.value = "";
             displayCategorie(0);
         })
-        .catch((err) => console.log(err, "fetch error"));
+        .catch((err) => console.log(err, "error fetch"));
 });
 
 document.getElementById("form_gallery").addEventListener("input", () => {
@@ -221,6 +176,5 @@ document.getElementById("form_gallery").addEventListener("input", () => {
     } else
         colorbtn.style.backgroundColor = "#A7A7A7";
 })
-
 
 editIndex();

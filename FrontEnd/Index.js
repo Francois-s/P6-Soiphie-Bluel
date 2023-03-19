@@ -4,7 +4,7 @@ async function getWorks() {
     let result = await reponse.json();
     return (result);
   } catch (error) {
-    console.log('There was an error', error);
+    console.log('error', error);
   }
 }
 
@@ -14,7 +14,7 @@ async function getCategories() {
     let result = await reponse.json();
     return (result);
   } catch (error) {
-    console.log('There was an error', error);
+    console.log('error', error);
   }
 }
 
@@ -24,9 +24,7 @@ async function displayCategorie(stk) {
 
 
   gallery_stock.innerHTML = "";
-  console.log(works);
   works.forEach(element => {
-    console.log({ works, element });
     if (stk == 0 || element.categoryId == stk) {
       gallery_stock.innerHTML += `<figure>
       <img src="${element.imageUrl}" crossorigin="anonymous" alt="${element.title}" id_category="${element.categoryId}">
@@ -70,13 +68,11 @@ function setIntoIndex(categories, works) {
   }
 }
 
-
 async function getInfos() {
   let categories = await getCategories();
   let works = await getWorks();
 
   setIntoIndex(categories, works);
-  console.log(window.localStorage.getItem('isco'));
 }
 
 getInfos();

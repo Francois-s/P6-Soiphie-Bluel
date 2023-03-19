@@ -4,7 +4,6 @@ function is_co() {
   } else {
     document.getElementById('log').innerHTML = "login";
   }
-  console.log(window.localStorage.getItem('isco'));
 }
 document.getElementById('log').addEventListener("click", () => {
   window.localStorage.setItem('isco', 'no');
