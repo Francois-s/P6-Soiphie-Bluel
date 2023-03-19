@@ -113,9 +113,9 @@ document.getElementById("img_upload").addEventListener("change", () => {
     let output = document.getElementById("rendu-upload");
     output.style.zIndex = "1";
     console.log(event.target.files[0]);
-    output.src = URL.createObjectURL(event.target.files[0]); //URL that points to the selected file
+    output.src = URL.createObjectURL(event.target.files[0]);
     output.addEventListener("load", function () {
-        URL.revokeObjectURL(output.src); //to revoke the URL created by URL.createObjectURL(this.files[0]) to free memory
+        URL.revokeObjectURL(output.src);
     });
 });
 
@@ -147,8 +147,8 @@ document.getElementById('card_close').addEventListener("click", () => {
 
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 
-function preventDefault(e) {
-    e.preventDefault();
+function preventDefault(stock) {
+    stock.preventDefault();
 }
 
 function preventDefaultForScrollKeys(e) {
@@ -158,7 +158,6 @@ function preventDefaultForScrollKeys(e) {
     }
 }
 
-// modern Chrome requires { passive: false } when adding event
 var supportsPassive = false;
 try {
     window.addEventListener("test", null, Object.defineProperty({}, 'passive', {

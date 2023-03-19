@@ -562,10 +562,9 @@ footer nav ul {
 	align-items: center;
 	align-self: center;
 	width: 173px;
-	bottom: 472px;
+	bottom: 483px;
 	height: 36px;
 	border-radius: 50px;
-	z-index: 2;
 }
 
 .text_box {
@@ -579,6 +578,7 @@ footer nav ul {
 	align-self: center;
 	width: 100px;
 	bottom: 488px;
+	z-index: -1;
 }
 
 #rendu-upload {
