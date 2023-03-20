@@ -1,10 +1,14 @@
 function editIndex(stock) {
     let top_box = document.getElementById('top_box');
+    let edit = document.getElementById('modifier');
 
     if (stock == "yes") {
         top_box.classList.remove('invisibleb');
+        edit.classList.remove('invisibleb');
+        
     } else {
         top_box.classList.add('invisibleb');
+        edit.classList.add('invisibleb');
     }
 }
 
@@ -140,8 +144,6 @@ document.getElementById('card_close').addEventListener("click", () => {
 });
 
 document.getElementById("form_gallery").addEventListener("submit", (resp) => {
-    resp.preventDefault();
-
     const data = new FormData();
     data.append("image", resp.target.img_upload.files[0]);
     data.append("title", resp.target.title_form.value);
