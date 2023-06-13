@@ -144,6 +144,7 @@ document.getElementById('card_close').addEventListener("click", () => {
 });
 
 document.getElementById("form_gallery").addEventListener("submit", (resp) => {
+    resp.preventDefault();
     const data = new FormData();
     data.append("image", resp.target.img_upload.files[0]);
     data.append("title", resp.target.title_form.value);
